@@ -46,11 +46,14 @@ class Worker {
   }
 
   static Jedis connectToRedis(String host) {
+    System.err.println("Connecting to redis");
     Jedis conn = new Jedis(host);
+    System.err.println("Setting password");
+    conn.auth("redis_password");
+    System.err.println("Connected to redis with password");
 
     while (true) {
       try {
-        conn.auth("redis_password");
         conn.keys("*");
         break;
       } catch (JedisConnectionException e) {
@@ -73,7 +76,7 @@ class Worker {
 
       while (conn == null) {
         try {
-          conn = DriverManager.getConnection(url, "postgres", "postgres");
+          conn = DriverManager.getConnection(url, "postgres_user", "postgres_password");
         } catch (SQLException e) {
           System.err.println("Waiting for db");
           sleep(1000);
