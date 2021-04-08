@@ -1,0 +1,11 @@
+The following service(s) have been created in your project: db.
+
+       Username: postgres_user
+       Password: postgres_password
+  Database Name: postgres
+ Connection URL: postgresql://db:5432/
+
+For more information about using this template, including
+OpenShift considerations, see
+https://github.com/sclorg/postgresql-container/ .
+
