@@ -50,8 +50,8 @@ class Worker {
 
     while (true) {
       try {
-        conn.keys("*");
         conn.auth("redis_password");
+        conn.keys("*");
         break;
       } catch (JedisConnectionException e) {
         System.err.println("Waiting for redis");
